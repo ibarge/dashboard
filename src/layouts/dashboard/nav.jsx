@@ -75,15 +75,15 @@ export default function Nav({ openNav, onCloseNav }) {
       <Stack alignItems="center" spacing={3} sx={{ pt: 5, borderRadius: 2, position: 'relative' }}>
         <Box
           component="img"
-          src="/assets/illustrations/illustration_avatar.png"
+          src="/assets/illustrations/icons8-buy-100.png"
           sx={{ width: 100, position: 'absolute', top: -50 }}
         />
 
         <Box sx={{ textAlign: 'center' }}>
-          <Typography variant="h6">Get more?</Typography>
+          <Typography variant="h6">تمدید اشتراک</Typography>
 
           <Typography variant="body2" sx={{ color: 'text.secondary', mt: 1 }}>
-            From only $69
+          اشتراک شما {account.cradit} روز دیگر پایان مییابد
           </Typography>
         </Box>
 
@@ -93,7 +93,7 @@ export default function Nav({ openNav, onCloseNav }) {
           variant="contained"
           color="inherit"
         >
-          Upgrade to Pro
+          خرید
         </Button>
       </Stack>
     </Box>
@@ -118,7 +118,7 @@ export default function Nav({ openNav, onCloseNav }) {
 
       <Box sx={{ flexGrow: 1 }} />
 
-      {renderUpgrade}
+      {account.cradit<10?renderUpgrade:null}
     </Scrollbar>
   );
 
