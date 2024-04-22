@@ -4,6 +4,7 @@ import Container from '@mui/material/Container';
 import Grid from '@mui/material/Unstable_Grid2';
 import Typography from '@mui/material/Typography';
 
+import { account } from 'src/_mock/account';
 import Iconify from 'src/components/iconify';
 
 import AppTasks from '../app-tasks';
@@ -22,7 +23,7 @@ export default function AppView() {
   return (
     <Container maxWidth="xl">
       <Typography variant="h4" sx={{ mb: 5 }}>
-        Hi, Welcome back 👋
+        سلام, خوش آمدی {account.displayName} 👋
       </Typography>
 
       <Grid container spacing={3}>

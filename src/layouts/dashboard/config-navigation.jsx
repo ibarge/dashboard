@@ -19,7 +19,7 @@ const navConfig = [
   },
   {
     title: 'گزارش',
-    path: '/log',
+    path: '/user',
     icon: icon('ic_analytics'),
   }
 ];
