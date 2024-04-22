@@ -39,7 +39,8 @@
     "react-hook-form": "^7.47.0",
     "react-router-dom": "^6.16.0",
     "simplebar-react": "^3.2.4",
-    "tabulator-tables": "^6.2.0"
+    "tabulator-tables": "^6.2.0",
+    "xlsx": "https://cdn.sheetjs.com/xlsx-0.20.2/xlsx-0.20.2.tgz"
   },
   "devDependencies": {
     "@vitejs/plugin-react-swc": "^3.4.0",
