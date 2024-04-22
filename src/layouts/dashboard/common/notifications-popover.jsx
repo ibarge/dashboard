@@ -28,46 +28,46 @@ import Scrollbar from 'src/components/scrollbar';
 const NOTIFICATIONS = [
   {
     id: faker.string.uuid(),
-    title: 'Your order is placed',
-    description: 'waiting for shipping',
+    title: 'ارسال صورت حساب',
+    description: 'احداث پارکینگ شهداری حمیدیا',
     avatar: null,
-    type: 'order_placed',
+    type: 'invoice_send',
     createdAt: set(new Date(), { hours: 10, minutes: 30 }),
     isUnRead: true,
   },
   {
     id: faker.string.uuid(),
-    title: faker.person.fullName(),
-    description: 'answered to your comment on the Minimal',
-    avatar: '/assets/images/avatars/avatar_2.jpg',
-    type: 'friend_interactive',
+    title: "ثبت موفق",
+    description: 'تجهیزات بیمارستان افشار',
+    avatar: null,
+    type: 'invoice_success',
     createdAt: sub(new Date(), { hours: 3, minutes: 30 }),
     isUnRead: true,
   },
   {
     id: faker.string.uuid(),
-    title: 'You have new message',
-    description: '5 unread messages',
+    title: 'خطا',
+    description: 'حمل بار شرکت پردیسان',
     avatar: null,
-    type: 'chat_message',
+    type: 'invoice_error',
     createdAt: sub(new Date(), { days: 1, hours: 3, minutes: 30 }),
     isUnRead: false,
   },
   {
     id: faker.string.uuid(),
-    title: 'You have new mail',
-    description: 'sent from Guido Padberg',
+    title: 'ثبت با هشدار',
+    description: 'جواهرات اقای پازوکی',
     avatar: null,
-    type: 'mail',
+    type: 'invoice_warnning',
     createdAt: sub(new Date(), { days: 2, hours: 3, minutes: 30 }),
     isUnRead: false,
   },
   {
     id: faker.string.uuid(),
-    title: 'Delivery processing',
-    description: 'Your order is being shipped',
+    title: 'پروفایل اضافه شد',
+    description: 'ایمن الکترونیک یاس',
     avatar: null,
-    type: 'order_shipped',
+    type: 'profile_add',
     createdAt: sub(new Date(), { days: 3, hours: 3, minutes: 30 }),
     isUnRead: false,
   },
@@ -121,9 +121,9 @@ export default function NotificationsPopover() {
       >
         <Box sx={{ display: 'flex', alignItems: 'center', py: 2, px: 2.5 }}>
           <Box sx={{ flexGrow: 1 }}>
-            <Typography variant="subtitle1">Notifications</Typography>
+            <Typography variant="subtitle1">پیام ها</Typography>
             <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-              You have {totalUnRead} unread messages
+              شما {totalUnRead} پیام جدید دارید
             </Typography>
           </Box>
 
@@ -143,7 +143,7 @@ export default function NotificationsPopover() {
             disablePadding
             subheader={
               <ListSubheader disableSticky sx={{ py: 1, px: 2.5, typography: 'overline' }}>
-                New
+                جدید
               </ListSubheader>
             }
           >
@@ -156,7 +156,7 @@ export default function NotificationsPopover() {
             disablePadding
             subheader={
               <ListSubheader disableSticky sx={{ py: 1, px: 2.5, typography: 'overline' }}>
-                Before that
+                قدیمی
               </ListSubheader>
             }
           >
@@ -170,7 +170,7 @@ export default function NotificationsPopover() {
 
         <Box sx={{ p: 1 }}>
           <Button fullWidth disableRipple>
-            View All
+            مشاهده همه
           </Button>
         </Box>
       </Popover>
@@ -234,7 +234,7 @@ function NotificationItem({ notification }) {
 
 function renderContent(notification) {
   const title = (
-    <Typography variant="subtitle2">
+    <Typography variant="subtitle2" sx={{textAlign:'right'}}>
       {notification.title}
       <Typography component="span" variant="body2" sx={{ color: 'text.secondary' }}>
         &nbsp; {notification.description}
@@ -242,27 +242,33 @@ function renderContent(notification) {
     </Typography>
   );
 
-  if (notification.type === 'order_placed') {
+  if (notification.type === 'invoice_send') {
     return {
-      avatar: <img alt={notification.title} src="/assets/icons/ic_notification_package.svg" />,
+      avatar: <img alt={notification.title} src="/assets/icons/icons8-outgoing-data-50.png" />,
       title,
     };
   }
-  if (notification.type === 'order_shipped') {
+  if (notification.type === 'invoice_success') {
     return {
-      avatar: <img alt={notification.title} src="/assets/icons/ic_notification_shipping.svg" />,
+      avatar: <img alt={notification.title} src="/assets/icons/icons8-success-50.png" />,
       title,
     };
   }
-  if (notification.type === 'mail') {
+  if (notification.type === 'invoice_error') {
     return {
-      avatar: <img alt={notification.title} src="/assets/icons/ic_notification_mail.svg" />,
+      avatar: <img alt={notification.title} src="/assets/icons/icons8-error-50.png" />,
       title,
     };
   }
-  if (notification.type === 'chat_message') {
+  if (notification.type === 'invoice_warnning') {
     return {
-      avatar: <img alt={notification.title} src="/assets/icons/ic_notification_chat.svg" />,
+      avatar: <img alt={notification.title} src="/assets/icons/icons8-warnning-50.png" />,
+      title,
+    };
+  }
+  if (notification.type === 'profile_add') {
+    return {
+      avatar: <img alt={notification.title} src="/assets/icons/icons8-add-50.png" />,
       title,
     };
   }

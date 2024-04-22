@@ -15,15 +15,15 @@ import { account } from 'src/_mock/account';
 
 const MENU_OPTIONS = [
   {
-    label: 'Home',
+    label: 'خانه',
     icon: 'eva:home-fill',
   },
   {
-    label: 'Profile',
+    label: 'پروفایل ها',
     icon: 'eva:person-fill',
   },
   {
-    label: 'Settings',
+    label: 'تنظیمات',
     icon: 'eva:settings-2-fill',
   },
 ];
@@ -88,7 +88,7 @@ export default function AccountPopover() {
             {account.displayName}
           </Typography>
           <Typography variant="body2" sx={{ color: 'text.secondary' }} noWrap>
-            {account.email}
+            {account.phone}
           </Typography>
         </Box>
 
@@ -108,7 +108,7 @@ export default function AccountPopover() {
           onClick={handleClose}
           sx={{ typography: 'body2', color: 'error.main', py: 1.5 }}
         >
-          Logout
+          خروج
         </MenuItem>
       </Popover>
     </>

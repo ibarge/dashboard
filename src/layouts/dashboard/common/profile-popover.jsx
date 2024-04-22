@@ -7,34 +7,55 @@ import IconButton from '@mui/material/IconButton';
 
 // ----------------------------------------------------------------------
 
-const LANGS = [
+const PROFILE = [
   {
-    value: 'en',
-    label: 'English',
-    icon: '/assets/icons/ic_flag_en.svg',
+    value: '14003474608',
+    label: 'توسعه اطلاعات مالی ایساتیس پویا',
+    icon: '/assets/icons/icons8-company-48.png',
   },
   {
-    value: 'de',
-    label: 'German',
-    icon: '/assets/icons/ic_flag_de.svg',
+    value: '14009114360',
+    label: 'آتیه سازان کویر یزدان',
+    icon: '/assets/icons/icons8-company-48.png',
   },
   {
-    value: 'fr',
-    label: 'French',
-    icon: '/assets/icons/ic_flag_fr.svg',
+    value: '14004814188',
+    label: 'ایمن الکترونیک یاس',
+    icon: '/assets/icons/icons8-company-48.png',
   },
 ];
 
 // ----------------------------------------------------------------------
 
-export default function LanguagePopover() {
+export default function ProfilePopover() {
+
+  const [active, setActive] = useState(PROFILE[0]);
+
+  function splitString(str) {
+    const arrayString = str.split(" ");
+    const arrayStringTwo = arrayString.slice(0, 2).map(i=>i.slice(0,1));
+    let concatenatedString = "";
+
+    for (let i = 0; i < arrayStringTwo.length; i+=1) {
+      concatenatedString += arrayStringTwo[i];
+      if (i < arrayStringTwo.length - 1) {
+        concatenatedString += " ";
+      }
+    }  
+    return concatenatedString;
+}
+
+
   const [open, setOpen] = useState(null);
 
   const handleOpen = (event) => {
     setOpen(event.currentTarget);
   };
 
-  const handleClose = () => {
+  const handleClose = (select) => {
+    if (select) {
+      setActive(select)
+    }
     setOpen(null);
   };
 
@@ -50,13 +71,14 @@ export default function LanguagePopover() {
           }),
         }}
       >
-        <img src={LANGS[0].icon} alt={LANGS[0].label} />
+        {/* <img src={active.icon} alt={active.label} /> */}
+        <h6>{splitString(active.label)}</h6>
       </IconButton>
 
       <Popover
         open={!!open}
         anchorEl={open}
-        onClose={handleClose}
+        onClose={()=>handleClose(null)}
         anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
         transformOrigin={{ vertical: 'top', horizontal: 'right' }}
         PaperProps={{
@@ -64,15 +86,15 @@ export default function LanguagePopover() {
             p: 0,
             mt: 1,
             ml: 0.75,
-            width: 180,
+            width: 280,
           },
         }}
       >
-        {LANGS.map((option) => (
+        {PROFILE.map((option) => (
           <MenuItem
             key={option.value}
-            selected={option.value === LANGS[0].value}
-            onClick={() => handleClose()}
+            selected={option.value === active.value}
+            onClick={() => handleClose(option)}
             sx={{ typography: 'body2', py: 1 }}
           >
             <Box component="img" alt={option.label} src={option.icon} sx={{ width: 28, mr: 2 }} />

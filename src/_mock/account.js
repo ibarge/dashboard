@@ -1,7 +1,8 @@
 // ----------------------------------------------------------------------
 
 export const account = {
-  displayName: 'Jaydon Frankie',
-  email: 'demo@minimals.cc',
+  displayName: 'محمد حسین کارگر',
+  phone: '09011010959',
   photoURL: '/assets/images/avatars/avatar_25.jpg',
+  uid:'d65f6d59bnlk9vdf665vdfjhsnmrywsff'
 };
