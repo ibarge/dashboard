@@ -10,11 +10,12 @@ import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 
 import Iconify from 'src/components/iconify';
-import Grid2 from '@mui/material/Unstable_Grid2/Grid2';
+import { Box, ButtonGroup, Modal, Stack } from '@mui/material';
 
 // ----------------------------------------------------------------------
 
 export default function InvoicePage() {
+  const [insertOpen, setInsertOpen] = useState(false)
   const [dataVar, setDataVar] = useState([
     { Title: 'باسکول ابوذر', taxid: 22, createat: '1402-10-12' , status:'موفق'},
     { Title: 'پارکینگ شهرداری', taxid: 24, createat: '1402-10-01' , status:'پردازش'},
@@ -68,6 +69,7 @@ export default function InvoicePage() {
               "next":"بعدی",
               "next_title":"صفحه بعد",
               "all":"همه",
+              "page_size":"اندازه صفحه"
             },
         }
     },
@@ -85,29 +87,62 @@ export default function InvoicePage() {
 
   return (
     <Container>
-      <Grid2 container spacing={17}>
-        <Grid2 xs={4}>
+      <Stack direction="row" alignItems="center" justifyContent="space-between" mb={5}>
+
         <Typography variant="h4">صورت حساب</Typography>
-        </Grid2>
-        <Grid2 xs={8}>
-          {null}
-        </Grid2>
-        <Grid2 xs={5}>
-        <Container>
-        <Button variant="contained" color="inherit" startIcon={<Iconify icon="eva:plus-fill" />}>
+
+
+
+        <ButtonGroup variant="contained" color="inherit" sx={{direction:'ltr'}}>
+        <Button variant="contained" color="inherit" startIcon={<Iconify icon="eva:plus-fill" />} onClick={()=>setInsertOpen(true)}>
           افزودن
         </Button>
-        <Button variant="contained" color="inherit" startIcon={<Iconify icon="eva:plus-fill" />}>
+        <Button variant="contained" color="inherit" startIcon={<Iconify icon="octicon:download-24" />}>
           دانلود
         </Button>
 
-        </Container>
-        </Grid2>
+        </ButtonGroup>
 
-      </Grid2>
+
+
+      </Stack>
       <Card>
         <Container id="table" />
       </Card>
+
+
+      <Modal open={insertOpen} onClose={()=>setInsertOpen(false)} aria-labelledby="modal-modal-title" aria-describedby="modal-modal-description">
+        <Box sx={{
+  position: 'absolute',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  width: 400,
+  bgcolor: 'background.paper',
+  border: '2px solid #000',
+  boxShadow: 24,
+  p: 4,
+}}>
+          <Typography id="modal-modal-title" variant="h6" component="h2">
+            Text in a modal
+          </Typography>
+          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+            Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
+          </Typography>
+          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+            Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
+          </Typography>
+          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+            Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
+          </Typography>
+          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+            Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
+          </Typography>
+          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+            Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
+          </Typography>
+        </Box>
+      </Modal>
     </Container>
   );
 }

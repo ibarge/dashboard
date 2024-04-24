@@ -5,15 +5,13 @@ import Grid from '@mui/material/Unstable_Grid2';
 import Typography from '@mui/material/Typography';
 
 import { account } from 'src/_mock/account';
-import Iconify from 'src/components/iconify';
 
-import AppTasks from '../app-tasks';
 import AppNewsUpdate from '../app-news-update';
 import AppOrderTimeline from '../app-order-timeline';
 import AppCurrentVisits from '../app-current-visits';
 import AppWebsiteVisits from '../app-website-visits';
 import AppWidgetSummary from '../app-widget-summary';
-import AppTrafficBySite from '../app-traffic-by-site';
+
 import AppCurrentSubject from '../app-current-subject';
 import AppConversionRates from '../app-conversion-rates';
 
@@ -29,8 +27,8 @@ export default function AppView() {
       <Grid container spacing={3}>
         <Grid xs={12} sm={6} md={3}>
           <AppWidgetSummary
-            title="Weekly Sales"
-            total={714000}
+            title="تعداد صورت حساب ها"
+            total={26}
             color="success"
             icon={<img alt="icon" src="/assets/icons/glass/ic_glass_bag.png" />}
           />
@@ -38,8 +36,8 @@ export default function AppView() {
 
         <Grid xs={12} sm={6} md={3}>
           <AppWidgetSummary
-            title="New Users"
-            total={1352831}
+            title="مبلغ فروش"
+            total={135246831}
             color="info"
             icon={<img alt="icon" src="/assets/icons/glass/ic_glass_users.png" />}
           />
@@ -47,8 +45,8 @@ export default function AppView() {
 
         <Grid xs={12} sm={6} md={3}>
           <AppWidgetSummary
-            title="Item Orders"
-            total={1723315}
+            title="میانگین هر فروش"
+            total={5201360}
             color="warning"
             icon={<img alt="icon" src="/assets/icons/glass/ic_glass_buy.png" />}
           />
@@ -56,8 +54,8 @@ export default function AppView() {
 
         <Grid xs={12} sm={6} md={3}>
           <AppWidgetSummary
-            title="Bug Reports"
-            total={234}
+            title="صورت های نا موفق"
+            total={2}
             color="error"
             icon={<img alt="icon" src="/assets/icons/glass/ic_glass_message.png" />}
           />
@@ -65,8 +63,8 @@ export default function AppView() {
 
         <Grid xs={12} md={6} lg={8}>
           <AppWebsiteVisits
-            title="Website Visits"
-            subheader="(+43%) than last year"
+            title="فروش"
+            subheader="3 کد پر فروش"
             chart={{
               labels: [
                 '01/01/2003',
@@ -83,22 +81,22 @@ export default function AppView() {
               ],
               series: [
                 {
-                  name: 'Team A',
+                  name: 'ایمن الکترونیک یاس',
                   type: 'column',
                   fill: 'solid',
-                  data: [23, 11, 22, 27, 13, 22, 37, 21, 44, 22, 30],
+                  data: [455632, 755132, 575905, 508902, 428012, 322312, 355111, 391992, 318832, 614092, 519852],
                 },
                 {
-                  name: 'Team B',
+                  name: 'آتیه سازان کویر یزدان',
                   type: 'area',
                   fill: 'gradient',
-                  data: [44, 55, 41, 67, 22, 43, 21, 41, 56, 27, 43],
+                  data: [295372, 450132, 675905, 808372, 998012, 722312, 555371, 491992, 590832, 810792, 619952],
                 },
                 {
-                  name: 'Team C',
+                  name: 'توسعه اطلاعات مالی ایساتیس پویا',
                   type: 'line',
                   fill: 'solid',
-                  data: [30, 25, 36, 30, 45, 35, 64, 52, 59, 36, 39],
+                  data: [195372, 250132, 75905, 88372, 98012, 22312, 55371, 91992, 190832, 210792, 19952],
                 },
               ],
             }}
@@ -107,13 +105,12 @@ export default function AppView() {
 
         <Grid xs={12} md={6} lg={4}>
           <AppCurrentVisits
-            title="Current Visits"
+            title="تعداد صورت حساب ها"
             chart={{
               series: [
-                { label: 'America', value: 4344 },
-                { label: 'Asia', value: 5435 },
-                { label: 'Europe', value: 1443 },
-                { label: 'Africa', value: 4443 },
+                { label: 'ایمن الکترونیک یاس', value: 10 },
+                { label: 'آتیه سازان کویر یزدان', value: 5 },
+                { label: 'توسعه اطلاعات مالی ایساتیس پویا', value: 7 },
               ],
             }}
           />
@@ -121,20 +118,20 @@ export default function AppView() {
 
         <Grid xs={12} md={6} lg={8}>
           <AppConversionRates
-            title="Conversion Rates"
-            subheader="(+43%) than last year"
+            title="کالاهای یا خدمات پر فروش"
+            subheader="10 مورد پر فروش"
             chart={{
               series: [
-                { label: 'Italy', value: 400 },
-                { label: 'Japan', value: 430 },
-                { label: 'China', value: 448 },
-                { label: 'Canada', value: 470 },
-                { label: 'France', value: 540 },
-                { label: 'Germany', value: 580 },
-                { label: 'South Korea', value: 690 },
-                { label: 'Netherlands', value: 1100 },
-                { label: 'United States', value: 1200 },
-                { label: 'United Kingdom', value: 1380 },
+                { label: 'کابل شبکه کت 6', value: 15406300 },
+                { label: 'دوربین هایک ویژن مدل DT53x', value: 14900000 },
+                { label: 'دوربین هایک ویژن مدل DT56x', value: 13500000 },
+                { label: 'لوله پلکسی', value: 8500000 },
+                { label: 'هارد 2 ترا هیتاچی', value: 8000000 },
+                { label: 'سوئیچ شبکه مدل 5560', value: 7000000 },
+                { label: 'سوئیچ شبکه مدل 5561', value: 6500000 },
+                { label: 'سوئیچ شبکه مدل 5562', value: 6000000 },
+                { label: 'دوربین داهوا مدل 400s', value: 3500000 },
+                { label: 'کابل hdmi', value: 450000 },
               ],
             }}
           />
@@ -142,13 +139,13 @@ export default function AppView() {
 
         <Grid xs={12} md={6} lg={4}>
           <AppCurrentSubject
-            title="Current Subject"
+            title="وضعیت"
             chart={{
-              categories: ['English', 'History', 'Physics', 'Geography', 'Chinese', 'Math'],
+              categories: ['تعداد', 'مبلغ', 'خطا', 'هشدار','ابطال'],
               series: [
-                { name: 'Series 1', data: [80, 50, 30, 40, 100, 20] },
-                { name: 'Series 2', data: [20, 30, 40, 80, 20, 80] },
-                { name: 'Series 3', data: [44, 76, 78, 13, 43, 10] },
+                { name: 'ایمن الکترونیک یاس', data: [80, 50, 30, 40, 25] },
+                { name: 'آتیه سازان کویر یزدان', data: [20, 30, 40, 80, 60] },
+                { name: 'توسعه اطلاعات مالی ایساتیس پویا', data: [44, 76, 78, 13, 15] },
               ],
             }}
           />
@@ -156,7 +153,7 @@ export default function AppView() {
 
         <Grid xs={12} md={6} lg={8}>
           <AppNewsUpdate
-            title="News Update"
+            title="اطلاعیه های سازمان"
             list={[...Array(5)].map((_, index) => ({
               id: faker.string.uuid(),
               title: faker.person.jobTitle(),
@@ -169,15 +166,14 @@ export default function AppView() {
 
         <Grid xs={12} md={6} lg={4}>
           <AppOrderTimeline
-            title="Order Timeline"
-            list={[...Array(5)].map((_, index) => ({
+            title="رویداد ها اخیر"
+            list={[...Array(4)].map((_, index) => ({
               id: faker.string.uuid(),
               title: [
-                '1983, orders, $4220',
-                '12 Invoices have been paid',
-                'Order #37745 from September',
-                'New order placed #XF-2356',
-                'New order placed #XF-2346',
+                'ثبت پروقایل ایمن الکترونیک یاس',
+                'ارسال صورت حساب پارکینگ شهرداری',
+                'ورود کاربر',
+                'تغییر رمز شماره همراه',
               ][index],
               type: `order${index + 1}`,
               time: faker.date.past(),
@@ -185,46 +181,7 @@ export default function AppView() {
           />
         </Grid>
 
-        <Grid xs={12} md={6} lg={4}>
-          <AppTrafficBySite
-            title="Traffic by Site"
-            list={[
-              {
-                name: 'FaceBook',
-                value: 323234,
-                icon: <Iconify icon="eva:facebook-fill" color="#1877F2" width={32} />,
-              },
-              {
-                name: 'Google',
-                value: 341212,
-                icon: <Iconify icon="eva:google-fill" color="#DF3E30" width={32} />,
-              },
-              {
-                name: 'Linkedin',
-                value: 411213,
-                icon: <Iconify icon="eva:linkedin-fill" color="#006097" width={32} />,
-              },
-              {
-                name: 'Twitter',
-                value: 443232,
-                icon: <Iconify icon="eva:twitter-fill" color="#1C9CEA" width={32} />,
-              },
-            ]}
-          />
-        </Grid>
 
-        <Grid xs={12} md={6} lg={8}>
-          <AppTasks
-            title="Tasks"
-            list={[
-              { id: '1', name: 'Create FireStone Logo' },
-              { id: '2', name: 'Add SCSS and JS files if required' },
-              { id: '3', name: 'Stakeholder Meeting' },
-              { id: '4', name: 'Scoping & Estimations' },
-              { id: '5', name: 'Sprint Showcase' },
-            ]}
-          />
-        </Grid>
       </Grid>
     </Container>
   );
