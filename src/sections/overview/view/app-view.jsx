@@ -30,7 +30,7 @@ export default function AppView() {
             title="تعداد صورت حساب ها"
             total={26}
             color="success"
-            icon={<img alt="icon" src="/assets/icons/glass/ic_glass_bag.png" />}
+            icon={<img alt="icon" src="/assets/icons/icons8-invoice-100.png" />}
           />
         </Grid>
 
@@ -39,7 +39,7 @@ export default function AppView() {
             title="مبلغ فروش"
             total={135246831}
             color="info"
-            icon={<img alt="icon" src="/assets/icons/glass/ic_glass_users.png" />}
+            icon={<img alt="icon" src="/assets/icons/icons8-shopping-basket-100.png" />}
           />
         </Grid>
 
@@ -48,7 +48,7 @@ export default function AppView() {
             title="میانگین هر فروش"
             total={5201360}
             color="warning"
-            icon={<img alt="icon" src="/assets/icons/glass/ic_glass_buy.png" />}
+            icon={<img alt="icon" src="/assets/icons/icons8-shopping-bag-100.png" />}
           />
         </Grid>
 
@@ -57,7 +57,7 @@ export default function AppView() {
             title="صورت های نا موفق"
             total={2}
             color="error"
-            icon={<img alt="icon" src="/assets/icons/glass/ic_glass_message.png" />}
+            icon={<img alt="icon" src="/assets/icons/icons8-error-50.png" />}
           />
         </Grid>
 
