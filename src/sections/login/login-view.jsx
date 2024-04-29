@@ -102,7 +102,7 @@ export default function LoginView() {
 
           <Typography variant="body2" sx={{ mt: 2, mb: 5 }}>
             هنوز ثبت نام نکردی؟
-            <Link variant="subtitle2" sx={{ ml: 0.5 }}>
+            <Link  variant="subtitle2" sx={{ ml: 0.5 }}>
               الان بساز
             </Link>
           </Typography>
