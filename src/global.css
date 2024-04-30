@@ -1,3 +1,16 @@
 /* scrollbar */
 @import 'simplebar-react/dist/simplebar.min.css';
 @import url('tabulator-tables/dist/css/tabulator_materialize.min.css');
+
+
+.rmdp-container{
+    width: 100%;
+}
+
+.rmdp-input{
+    width: 100%;
+    height: 100%;
+    height: 40px !important;
+    border-radius: 7px !important;
+    border-color: #e4e4e4 !important;
+}

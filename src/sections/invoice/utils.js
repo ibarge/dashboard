@@ -54,3 +54,10 @@ export function applyFilter({ inputData, comparator, filterName }) {
 
   return inputData;
 }
+
+export function getDateBefore(days) {
+  const currentDate = new Date();
+  const targetDate = new Date(currentDate);
+  targetDate.setDate(currentDate.getDate() - days);
+  return targetDate;
+}

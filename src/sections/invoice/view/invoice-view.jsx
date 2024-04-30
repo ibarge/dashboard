@@ -8,39 +8,46 @@ import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
 
 import Typography from '@mui/material/Typography';
-
+import DatePicker from 'react-multi-date-picker';
+import persian from 'react-date-object/calendars/persian';
+import persian_fa from 'react-date-object/locales/persian_fa';
+import TimePicker from 'react-multi-date-picker/plugins/time_picker';
 import Iconify from 'src/components/iconify';
 import {
   ButtonGroup,
-  // Divider,
+  Divider,
   Grid,
   Modal,
   Stack,
-  // TextField,
-  // Tooltip,
+  TextField,
+  Tooltip,
   Box,
   Stepper,
   Step,
   StepLabel,
+  MenuItem,
+  FormHelperText,
 } from '@mui/material';
 
+import { getDateBefore } from '../utils';
 // ----------------------------------------------------------------------
 
 export default function InvoicePage() {
   const [insertOpen, setInsertOpen] = useState(false);
   const [title, setTitle] = useState('');
-  const [taxid, setTaxid] = useState('');
-  const [indatim, setIndatim] = useState('');
-  const [indati2m, setIndati2m] = useState('');
+  const [inno, setInno] = useState('');
+  const [indatim, setIndatim] = useState(getDateBefore(2));
+  const [indati2m, setIndati2m] = useState(getDateBefore(1));
+  const [inty, setInty] = useState(1);
+  const [inp, setInp] = useState(1);
+  const [crn, setCrn] = useState('');
+
   const [activeStep, setActiveStep] = useState(0);
+
   const [step, setStep] = useState([
     {
       key: 0,
-      label: 'مرحله نخست',
-      icon: 'eva:plus-fill',
-      content: 
-      activeStep
-      ,
+      label: 'مشخصات کلی',
     },
     {
       key: 1,
@@ -223,12 +230,182 @@ export default function InvoicePage() {
               </Stepper>
             </Grid>
             <Grid item xs={12} sm={12}>
-              <Typography variant="h6" component="h4">
-                {activeStep}
-              </Typography>
+              <Divider />
             </Grid>
-          </Grid>
 
+            {activeStep === 0 ? (
+              <>
+                <Grid item xs={12} sm={6}>
+                  <TextField
+                    id="title"
+                    name="title"
+                    label="عنوان صورت حساب"
+                    fullWidth
+                    size="small"
+                    autoComplete="off"
+                    variant="outlined"
+                    dir="rtl"
+                    onChange={(e) => setTitle(e.target.value)}
+                    value={title}
+                  />
+                  <Tooltip
+                    title="فیلد عنوان به سامانه ارسال نمیشود. برای تمایز بین صورت حساب ها در داشبورد از عنوان های معنا دار استفاده شود"
+                    arrow
+                  >
+                    <FormHelperText>اختیاری و به سامانه ارسال نمیشود</FormHelperText>
+                  </Tooltip>
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                  <TextField
+                    required
+                    fullWidth
+                    id="inno"
+                    name="inno"
+                    label="شماره داخلی صورت حساب"
+                    size="small"
+                    autoComplete="off"
+                    variant="outlined"
+                    dir="rtl"
+                    onChange={(e) => setInno(e.target.value)}
+                    value={inno}
+                  />
+                  <Tooltip
+                    title="این شماره صورت حساب در سیستم داخلی خود شرکت میباشد و برای هر صورت حساب میبایست منحصر به فرد است"
+                    arrow
+                  >
+                    <FormHelperText>منحصر به فرد برای هر صورت حساب</FormHelperText>
+                  </Tooltip>
+                </Grid>
+                <Grid item xs={12} sm={12}>
+                  <Divider />
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                  <DatePicker
+                    minDate={getDateBefore(21)}
+                    maxDate={new Date()}
+                    calendar={persian}
+                    locale={persian_fa}
+                    calendarPosition="bottom-right"
+                    value={indatim}
+                    onChange={(dt) => setIndatim(dt)}
+                    format="صدور YYYY/MM/DD dddd hh:mm:ss"
+                    plugins={[<TimePicker position="bottom" />]}
+                    placeholder="تاریخ صدور صورت حساب"
+                  />
+                  <Tooltip
+                    title="تاریخ و زمان صدور صورت حساب، این مقدار نمیتواند پیش تر از 21 روز گذشته باشد"
+                    arrow
+                  >
+                    <FormHelperText>حداکثر 21 روز قبل</FormHelperText>
+                  </Tooltip>
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                  <DatePicker
+                    format="ایجاد YYYY/MM/DD dddd hh:mm:ss"
+                    minDate={indatim}
+                    maxDate={new Date()}
+                    calendar={persian}
+                    locale={persian_fa}
+                    calendarPosition="bottom-right"
+                    value={indati2m}
+                    onChange={(dt) => setIndati2m(dt)}
+                    plugins={[<TimePicker position="bottom" />]}
+                    placeholder="تاریخ ایجاد صورت حساب"
+                  />
+                  <Tooltip
+                    title="تاریخ و زمان ایجاد صورت حساب، این مقدار نمیتواند قبل تر از تاریخ صدور باشد"
+                    arrow
+                  >
+                    <FormHelperText>بیشتر از تاریخ صدور</FormHelperText>
+                  </Tooltip>
+                </Grid>
+                <Grid item xs={12} sm={12}>
+                  <Divider />
+                </Grid>
+                <Grid item xs={12} sm={inp===4?4:6}>
+                  <TextField
+                    required
+                    fullWidth
+                    select
+                    id="inty"
+                    name="inty"
+                    label="نوع صورت حساب"
+                    size="small"
+                    autoComplete="off"
+                    variant="outlined"
+                    dir="rtl"
+                    onChange={(e) => setInty(e.target.value)}
+                    value={inty}
+                  >
+                    <MenuItem value={1}>نوع اول</MenuItem>
+                    <MenuItem value={2}>نوع دوم</MenuItem>
+                    <MenuItem value={3}>نوع سوم</MenuItem>
+                  </TextField>
+
+                  <Tooltip
+                    title="نوع اول اطلاعات خریدار و فروشنده در صورتحساب درج می‌شود و نوع دوم فقط معاملات که نقدی قابل ثبت و اطلاعات خریدار نیاز نیست ، نوع سوم تنها به برای ثبت اطلاعات دستگا های کارخوان است"
+                    arrow
+                  >
+                    <FormHelperText>فقط در نوع اول در کار پوشه خریدار درج میشود</FormHelperText>
+                  </Tooltip>
+                </Grid>
+                <Grid item xs={12} sm={inp===4?4:6}>
+                  <TextField
+                    required
+                    fullWidth
+                    select
+                    id="inp"
+                    name="inp"
+                    label="الگوی صورت حساب"
+                    size="small"
+                    autoComplete="off"
+                    variant="outlined"
+                    dir="rtl"
+                    onChange={(e) => setInp(e.target.value)}
+                    value={inp}
+                  >
+                    <MenuItem value={1}>فروش</MenuItem>
+                    <MenuItem value={2}>فروش ارزی</MenuItem>
+                    <MenuItem value={3}>طلا، جواهر و پالتین</MenuItem>
+                    <MenuItem value={4}>پیمانکاری</MenuItem>
+                    <MenuItem value={5}>قبوض خدماتی</MenuItem>
+                    <MenuItem value={6}>بلیت هواپیما</MenuItem>
+                  </TextField>
+
+                  <Tooltip
+                    title="با تغییر این مورد از فروش فیلد های اجباری و مورد نیاز تغییر خواهد کرد قبل از تغییر از دستورالعمل های ان مطلع شوید"
+                    arrow
+                  >
+                    <FormHelperText>پیشفرض فروش است</FormHelperText>
+                  </Tooltip>
+                </Grid>
+                {inp === 4 ? (
+                  <Grid item xs={12} sm={4}>
+                    <TextField
+                      required
+                      fullWidth
+                      id="inp"
+                      name="inp"
+                      label="شناسه یکتای قرارداد"
+                      size="small"
+                      autoComplete="off"
+                      variant="outlined"
+                      dir="rtl"
+                      onChange={(e) => setCrn(e.target.value)}
+                      value={crn}
+                    />
+
+                    <Tooltip
+                      title="برای الگو صورت حساب پیمانکاری نیاز است از قبل قرارداد خود را با کافرما در کاپوشه ثبت و بعد از تایید آن شماره قرارداد ثبت شده برای این صورت حساب را در این قسمت وارد کنید"
+                      arrow
+                    >
+                      <FormHelperText>واقع در کارپوشه</FormHelperText>
+                    </Tooltip>
+                  </Grid>
+                ) : null}
+              </>
+            ) : null}
+          </Grid>
 
           {/* 
 
